@@ -114,6 +114,7 @@ namespace WordPressToOUCampus
                     string postSlug = post.Slug.Replace("_", "-");
                     string filePath = postDirectory + "\\" + postSlug + ".pcf";
                     File.WriteAllText(filePath, outputFile);
+                    File.SetLastWriteTime(filePath, post.PublishedAtUtc.LocalDateTime);
                 }
             }
             catch (Exception ex)
