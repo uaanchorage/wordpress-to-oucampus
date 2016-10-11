@@ -90,7 +90,7 @@ namespace WordPressToOUCampus
 
                     // replace template fields
                     outputFile = outputFile.Replace("{{post-title}}", post.Title);
-                    outputFile = outputFile.Replace("{{post-date}}", post.PublishedAtUtc.LocalDateTime.ToString("MM/dd/yyyy hh:mm:ss tt"));
+                    outputFile = outputFile.Replace("{{post-date}}", post.PublishDate.ToString("MM/dd/yyyy hh:mm:ss tt"));
                     outputFile = outputFile.Replace("{{post-excerpt}}", post.Excerpt);
                     outputFile = outputFile.Replace("{{post-author}}", post.Author.DisplayName);
                     outputFile = outputFile.Replace("{{post-author-email}}", post.Author.Email);
@@ -106,7 +106,7 @@ namespace WordPressToOUCampus
 
                     // organize posts into directories based on (first) category
                     string category = post.Categories.FirstOrDefault()?.Slug ?? "uncategorized";
-                    string postDirectory = txtOutputDirectory.Text + "\\" + category;
+                    string postDirectory = txtOutputDirectory.Text + "\\posts\\" + category;
                     if (!Directory.Exists(postDirectory))
                         Directory.CreateDirectory(postDirectory);
 
@@ -114,7 +114,7 @@ namespace WordPressToOUCampus
                     string postSlug = post.Slug.Replace("_", "-");
                     string filePath = postDirectory + "\\" + postSlug + ".pcf";
                     File.WriteAllText(filePath, outputFile);
-                    File.SetLastWriteTime(filePath, post.PublishedAtUtc.LocalDateTime);
+                    File.SetLastWriteTime(filePath, post.PublishDate);
                 }
             }
             catch (Exception ex)
