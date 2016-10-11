@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<?pcf-stylesheet site="anchorage" path="/_resources/xsl/blog/post.xsl" title="Blog Post" extension="cshtml"?>
-<?pcf-stylesheet site="anchorage" path="/_resources/xsl/blog/post-xml.xsl" title="Blog XML" extension=".blog.xml" alternate="yes" ?>
+<?pcf-stylesheet site="anchorage" path="/_ouresources/xsl/blog/post.xsl" title="Blog Post" extension="cshtml"?>
+<?pcf-stylesheet site="anchorage" path="/_ouresources/xsl/blog/post-xml.xsl" title="Blog XML" extension=".blog.xml" alternate="yes" ?>
 <!DOCTYPE document SYSTEM "http://commons.omniupdate.com/dtd/standard.dtd"> 
 
 <document xmlns:ouc="http://omniupdate.com/XSL/Variables">
