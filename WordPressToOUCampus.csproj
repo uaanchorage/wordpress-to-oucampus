@@ -33,8 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PressSharper, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\PressSharper.1.1.0\lib\PressSharper.dll</HintPath>
+    <Reference Include="PressSharper, Version=1.2.0.8, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\PressSharper.1.2.0\lib\net452\PressSharper.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -71,6 +71,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="packages.config" />
+    <None Include="sample-page-template.pcf">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -80,7 +83,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="sample-template.pcf">
+    <None Include="sample-post-template.pcf">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>

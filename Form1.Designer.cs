@@ -35,9 +35,14 @@
             this.txtOutputDirectory = new System.Windows.Forms.TextBox();
             this.btnBrowseOutputDirectory = new System.Windows.Forms.Button();
             this.btnImport = new System.Windows.Forms.Button();
-            this.btnBrowseTemplateFile = new System.Windows.Forms.Button();
+            this.btnBrowsePostTemplate = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtTemplateFile = new System.Windows.Forms.TextBox();
+            this.txtPostTemplate = new System.Windows.Forms.TextBox();
+            this.cbImportPosts = new System.Windows.Forms.CheckBox();
+            this.cbImportPages = new System.Windows.Forms.CheckBox();
+            this.btnBrowsePageTemplate = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtPageTemplate = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // txtWordPressExportFile
@@ -69,7 +74,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 119);
+            this.label2.Location = new System.Drawing.Point(11, 217);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(85, 13);
             this.label2.TabIndex = 4;
@@ -77,15 +82,15 @@
             // 
             // txtOutputDirectory
             // 
-            this.txtOutputDirectory.Location = new System.Drawing.Point(12, 138);
+            this.txtOutputDirectory.Location = new System.Drawing.Point(13, 236);
             this.txtOutputDirectory.Name = "txtOutputDirectory";
             this.txtOutputDirectory.Size = new System.Drawing.Size(388, 20);
             this.txtOutputDirectory.TabIndex = 3;
-            this.txtOutputDirectory.Text = "C:\\temp\\ou-blogs";
+            this.txtOutputDirectory.Text = "C:\\temp\\oucampus";
             // 
             // btnBrowseOutputDirectory
             // 
-            this.btnBrowseOutputDirectory.Location = new System.Drawing.Point(406, 136);
+            this.btnBrowseOutputDirectory.Location = new System.Drawing.Point(407, 234);
             this.btnBrowseOutputDirectory.Name = "btnBrowseOutputDirectory";
             this.btnBrowseOutputDirectory.Size = new System.Drawing.Size(75, 23);
             this.btnBrowseOutputDirectory.TabIndex = 5;
@@ -95,7 +100,7 @@
             // 
             // btnImport
             // 
-            this.btnImport.Location = new System.Drawing.Point(406, 191);
+            this.btnImport.Location = new System.Drawing.Point(407, 289);
             this.btnImport.Name = "btnImport";
             this.btnImport.Size = new System.Drawing.Size(75, 23);
             this.btnImport.TabIndex = 6;
@@ -103,40 +108,98 @@
             this.btnImport.UseVisualStyleBackColor = true;
             this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
             // 
-            // btnBrowseTemplateFile
+            // btnBrowsePostTemplate
             // 
-            this.btnBrowseTemplateFile.Location = new System.Drawing.Point(406, 81);
-            this.btnBrowseTemplateFile.Name = "btnBrowseTemplateFile";
-            this.btnBrowseTemplateFile.Size = new System.Drawing.Size(75, 23);
-            this.btnBrowseTemplateFile.TabIndex = 9;
-            this.btnBrowseTemplateFile.Text = "Browse...";
-            this.btnBrowseTemplateFile.UseVisualStyleBackColor = true;
-            this.btnBrowseTemplateFile.Click += new System.EventHandler(this.btnBrowseTemplateFile_Click);
+            this.btnBrowsePostTemplate.Enabled = false;
+            this.btnBrowsePostTemplate.Location = new System.Drawing.Point(406, 103);
+            this.btnBrowsePostTemplate.Name = "btnBrowsePostTemplate";
+            this.btnBrowsePostTemplate.Size = new System.Drawing.Size(75, 23);
+            this.btnBrowsePostTemplate.TabIndex = 9;
+            this.btnBrowsePostTemplate.Text = "Browse...";
+            this.btnBrowsePostTemplate.UseVisualStyleBackColor = true;
+            this.btnBrowsePostTemplate.Click += new System.EventHandler(this.btnBrowsePostTemplate_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(10, 64);
+            this.label3.Location = new System.Drawing.Point(10, 86);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(153, 13);
+            this.label3.Size = new System.Drawing.Size(176, 13);
             this.label3.TabIndex = 8;
-            this.label3.Text = "OU Campus template file (.pcf):";
+            this.label3.Text = "OU Campus post template file (.pcf):";
             // 
-            // txtTemplateFile
+            // txtPostTemplate
             // 
-            this.txtTemplateFile.Location = new System.Drawing.Point(12, 83);
-            this.txtTemplateFile.Name = "txtTemplateFile";
-            this.txtTemplateFile.Size = new System.Drawing.Size(388, 20);
-            this.txtTemplateFile.TabIndex = 7;
+            this.txtPostTemplate.Enabled = false;
+            this.txtPostTemplate.Location = new System.Drawing.Point(12, 105);
+            this.txtPostTemplate.Name = "txtPostTemplate";
+            this.txtPostTemplate.Size = new System.Drawing.Size(388, 20);
+            this.txtPostTemplate.TabIndex = 7;
+            // 
+            // cbImportPosts
+            // 
+            this.cbImportPosts.AutoSize = true;
+            this.cbImportPosts.Location = new System.Drawing.Point(12, 66);
+            this.cbImportPosts.Name = "cbImportPosts";
+            this.cbImportPosts.Size = new System.Drawing.Size(83, 17);
+            this.cbImportPosts.TabIndex = 10;
+            this.cbImportPosts.Text = "Import posts";
+            this.cbImportPosts.UseVisualStyleBackColor = true;
+            this.cbImportPosts.CheckedChanged += new System.EventHandler(this.cbImportPosts_CheckedChanged);
+            // 
+            // cbImportPages
+            // 
+            this.cbImportPages.AutoSize = true;
+            this.cbImportPages.Location = new System.Drawing.Point(12, 141);
+            this.cbImportPages.Name = "cbImportPages";
+            this.cbImportPages.Size = new System.Drawing.Size(87, 17);
+            this.cbImportPages.TabIndex = 14;
+            this.cbImportPages.Text = "Import pages";
+            this.cbImportPages.UseVisualStyleBackColor = true;
+            this.cbImportPages.CheckedChanged += new System.EventHandler(this.cbImportPages_CheckedChanged);
+            // 
+            // btnBrowsePageTemplate
+            // 
+            this.btnBrowsePageTemplate.Enabled = false;
+            this.btnBrowsePageTemplate.Location = new System.Drawing.Point(406, 178);
+            this.btnBrowsePageTemplate.Name = "btnBrowsePageTemplate";
+            this.btnBrowsePageTemplate.Size = new System.Drawing.Size(75, 23);
+            this.btnBrowsePageTemplate.TabIndex = 13;
+            this.btnBrowsePageTemplate.Text = "Browse...";
+            this.btnBrowsePageTemplate.UseVisualStyleBackColor = true;
+            this.btnBrowsePageTemplate.Click += new System.EventHandler(this.btnBrowsePageTemplate_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(10, 161);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(180, 13);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "OU Campus page template file (.pcf):";
+            // 
+            // txtPageTemplate
+            // 
+            this.txtPageTemplate.Enabled = false;
+            this.txtPageTemplate.Location = new System.Drawing.Point(12, 180);
+            this.txtPageTemplate.Name = "txtPageTemplate";
+            this.txtPageTemplate.Size = new System.Drawing.Size(388, 20);
+            this.txtPageTemplate.TabIndex = 11;
             // 
             // Form1
             // 
+            this.AcceptButton = this.btnImport;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(489, 223);
-            this.Controls.Add(this.btnBrowseTemplateFile);
+            this.ClientSize = new System.Drawing.Size(489, 322);
+            this.Controls.Add(this.cbImportPages);
+            this.Controls.Add(this.btnBrowsePageTemplate);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.txtPageTemplate);
+            this.Controls.Add(this.cbImportPosts);
+            this.Controls.Add(this.btnBrowsePostTemplate);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtTemplateFile);
+            this.Controls.Add(this.txtPostTemplate);
             this.Controls.Add(this.btnImport);
             this.Controls.Add(this.btnBrowseOutputDirectory);
             this.Controls.Add(this.label2);
@@ -164,9 +227,14 @@
         private System.Windows.Forms.TextBox txtOutputDirectory;
         private System.Windows.Forms.Button btnBrowseOutputDirectory;
         private System.Windows.Forms.Button btnImport;
-        private System.Windows.Forms.Button btnBrowseTemplateFile;
+        private System.Windows.Forms.Button btnBrowsePostTemplate;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtTemplateFile;
+        private System.Windows.Forms.TextBox txtPostTemplate;
+        private System.Windows.Forms.CheckBox cbImportPosts;
+        private System.Windows.Forms.CheckBox cbImportPages;
+        private System.Windows.Forms.Button btnBrowsePageTemplate;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtPageTemplate;
     }
 }
 
