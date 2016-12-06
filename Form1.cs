@@ -211,13 +211,6 @@ namespace WordPressToOUCampus
                         pageDirectory = parent.Slug + "\\" + pageDirectory;
                         current = parent;
                     }
-
-                    //// create directories
-                    //string directoryPath = txtOutputDirectory.Text + "\\pages\\";
-                    //string[] parts = pageDirectory.Split('\\');
-
-                    //if (!Directory.Exists(directoryPath))
-                    //    Directory.CreateDirectory(directoryPath);
                 }
 
                 pageDirectory = txtOutputDirectory.Text + "\\pages\\" + pageDirectory;
