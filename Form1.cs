@@ -171,6 +171,10 @@ namespace WordPressToOUCampus
                 postBody = postBody.Replace("\u2026", "...");
                 postBody = postBody.Replace('\u2032', '\'');
                 postBody = postBody.Replace('\u2033', '\"');
+
+                // remove any explicit height/width declarations
+                postBody = Regex.Replace(postBody, "\\s+width=\"[0-9]+\"", "");
+                postBody = Regex.Replace(postBody, "\\s+height=\"[0-9]+\"", "");
                 outputFile = outputFile.Replace("{{post-body}}", postBody);
 
                 // organize posts into directories based on (first) category
