@@ -175,6 +175,16 @@ namespace WordPressToOUCampus
                 // remove any explicit height/width declarations
                 postBody = Regex.Replace(postBody, "\\s+width=\"[0-9]+\"", "");
                 postBody = Regex.Replace(postBody, "\\s+height=\"[0-9]+\"", "");
+
+                // replace [caption] shortcodes with <div>
+                if (postBody.Contains("[caption"))
+                {
+                    postBody = postBody.Replace("[caption", "<div");
+                    postBody = Regex.Replace(postBody, "align=\"(?<align>[a-z]+)\"\\]", "class=\"${align} image-caption\">");
+                    postBody = Regex.Replace(postBody, "</a>(?<caption>.*)\\[/caption\\]", "</a><p class=\"image-caption\"><small>${caption}</small></p></div>"); // image w/ link
+                    postBody = Regex.Replace(postBody, "/>(?<caption>.*)\\[/caption\\]", "/><p class=\"image-caption\"><small>${caption}</small></p></div>"); // image w/o link
+                }
+
                 outputFile = outputFile.Replace("{{post-body}}", postBody);
 
                 // organize posts into directories based on (first) category
