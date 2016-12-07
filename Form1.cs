@@ -178,8 +178,17 @@ namespace WordPressToOUCampus
                 string postDirectory = txtOutputDirectory.Text + "\\posts\\" + category;
                 Directory.CreateDirectory(postDirectory);
 
-                // write .pcf file
+                // get filename
                 string postSlug = post.Slug.Replace("_", "-");
+                int postId;
+                // if slug is just the numeric post id, create slug from title
+                if (int.TryParse(postSlug, out postId))
+                {
+                    postSlug = post.Title.ToLower().Replace(" ", "-");
+                }
+                postSlug = Regex.Replace(postSlug, @"[^0-9a-zA-Z\-]", "");
+
+                // write .pcf file
                 string filePath = postDirectory + "\\" + postSlug + ".pcf";
                 File.WriteAllText(filePath, outputFile);
                 File.SetLastWriteTime(filePath, post.PublishDate);
