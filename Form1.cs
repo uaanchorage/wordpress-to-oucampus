@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using PressSharper;
 
@@ -143,10 +144,8 @@ namespace WordPressToOUCampus
                 outputFile = outputFile.Replace("{{post-excerpt}}", post.Excerpt);
                 outputFile = outputFile.Replace("{{post-author}}", post.Author.DisplayName);
                 outputFile = outputFile.Replace("{{post-author-email}}", post.Author.Email);
-                outputFile = outputFile.Replace("{{post-categories}}",
-                    string.Join(",", post.Categories.Select(c => c.Name)));
-                outputFile = outputFile.Replace("{{post-image-display}}",
-                    post.FeaturedImage != null ? "img" : "none");
+                outputFile = outputFile.Replace("{{post-categories}}", string.Join(",", post.Categories.Select(c => c.Name)));
+                outputFile = outputFile.Replace("{{post-image-display}}", post.FeaturedImage != null ? "img" : "none");
                 outputFile = outputFile.Replace("{{post-image-src}}", post.FeaturedImage?.Url);
                 outputFile = outputFile.Replace("{{post-image-alt}}", post.FeaturedImage?.Title);
 
@@ -155,9 +154,23 @@ namespace WordPressToOUCampus
                 postTitle = postTitle.Replace(" & ", " &amp; ");
                 outputFile = outputFile.Replace("{{post-title}}", postTitle);
 
-                // cleanup HTML encoding in body
+                // cleanup HTML encoding & other special characters in body
                 string postBody = post.Body;
                 postBody = postBody.Replace(" & ", " &amp; ");
+                postBody = postBody.Replace('\u2013', '-');
+                postBody = postBody.Replace('\u2014', '-');
+                postBody = postBody.Replace('\u2015', '-');
+                postBody = postBody.Replace('\u2017', '_');
+                postBody = postBody.Replace('\u2018', '\'');
+                postBody = postBody.Replace('\u2019', '\'');
+                postBody = postBody.Replace('\u201a', ',');
+                postBody = postBody.Replace('\u201b', '\'');
+                postBody = postBody.Replace('\u201c', '\"');
+                postBody = postBody.Replace('\u201d', '\"');
+                postBody = postBody.Replace('\u201e', '\"');
+                postBody = postBody.Replace("\u2026", "...");
+                postBody = postBody.Replace('\u2032', '\'');
+                postBody = postBody.Replace('\u2033', '\"');
                 outputFile = outputFile.Replace("{{post-body}}", postBody);
 
                 // organize posts into directories based on (first) category
