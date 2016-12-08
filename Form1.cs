@@ -185,6 +185,9 @@ namespace WordPressToOUCampus
                     postBody = Regex.Replace(postBody, "/>(?<caption>.*)\\[/caption\\]", "/><p class=\"image-caption\"><small>${caption}</small></p></div>"); // image w/o link
                 }
 
+                // change alignment classes
+                postBody = postBody.Replace("class=\"align", "class=\"");
+
                 outputFile = outputFile.Replace("{{post-body}}", postBody);
 
                 // organize posts into directories based on (first) category
