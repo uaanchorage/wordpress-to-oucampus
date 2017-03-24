@@ -59,6 +59,5 @@ More information here: http://support.omniupdate.com/oucampus9/development/templ
 
 	<ouc:div label="right-content" group="Everyone" button-text="Content Region">
         <ouc:editor csspath="/_resources/ou/editor/content.css" cssmenu="/_resources/ou/editor/styles.txt" width="1020" wysiwyg-class="rightcontent"/>
-		<p>{{a:17}}</p>
     </ouc:div>
 </document>
