@@ -19,14 +19,6 @@
         <!-- Page Properties -->
         <parameter name="heading" type="text" group="Everyone" prompt="Page Heading" alt="Page title by default.">{{page-title}}</parameter>
 
-        <!-- A-Z Listing Page Properties -->
-        <parameter name="az-include" group="Admin" prompt="Include" alt="Include in A-Z Listing" type="radio" section="A-Z Listing">
-            <option value="true" selected="false">Yes</option>
-            <option value="false" selected="true">No</option>
-        </parameter>
-        <parameter name="az-title1" group="Admin" prompt="Title" alt="Title text for the A-Z Listing">{{page-title}}</parameter>
-        <parameter name="az-title2" group="Admin" prompt="Title" alt="Optional cross listing title text for the A-Z Listing">Secondary Title</parameter>
-
         <!-- Amazing Quotes -->
         <parameter section="Template Features" name="quote-toggle" group="Everyone" prompt="Show Amazing Quotes" alt="Include Amazing Stories Quote" type="radio" >
             <option value="show" selected="false">Yes</option>
