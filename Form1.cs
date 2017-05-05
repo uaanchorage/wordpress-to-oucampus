@@ -149,6 +149,10 @@ namespace WordPressToOUCampus
                 outputFile = outputFile.Replace("{{post-image-src}}", post.FeaturedImage?.Url);
                 outputFile = outputFile.Replace("{{post-image-alt}}", post.FeaturedImage?.Title);
 
+                // add code to map post audience
+
+                // add code to map post categories
+
                 // cleanup HTML encoding in title
                 string postTitle = post.Title;
                 postTitle = postTitle.Replace(" & ", " &amp; ");
