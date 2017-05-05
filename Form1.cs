@@ -144,7 +144,7 @@ namespace WordPressToOUCampus
                 outputFile = outputFile.Replace("{{post-excerpt}}", post.Excerpt);
                 outputFile = outputFile.Replace("{{post-author}}", post.Author.DisplayName);
                 outputFile = outputFile.Replace("{{post-author-email}}", post.Author.Email);
-                outputFile = outputFile.Replace("{{post-categories}}", string.Join(",", post.Categories.Select(c => c.Name)));
+                outputFile = outputFile.Replace("{{post-tags}}", string.Join(",", post.Tags.Select(c => c.Name)));
                 outputFile = outputFile.Replace("{{post-image-display}}", post.FeaturedImage != null ? "img" : "none");
                 outputFile = outputFile.Replace("{{post-image-src}}", post.FeaturedImage?.Url);
                 outputFile = outputFile.Replace("{{post-image-alt}}", post.FeaturedImage?.Title);
