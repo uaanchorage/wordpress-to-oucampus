@@ -16,15 +16,41 @@
 	<ouc:properties label="config">
 		<!-- Right Column Content -->
 		<parameter section="Right Column Options" name="regions" type="checkbox" prompt="Right Column" alt="Check the boxes to enable the right column content regions." group="Everyone">
-			<option value="nav" selected="true">Main Interior Page Navigation</option>
-			<option value="catlist" selected="true">Category List</option>
+			<option value="nav" selected="false">Main Interior Page Navigation</option>
+			<option value="tablist" selected="false">Tab List</option>
+			<option value="catlist" selected="false">Category List</option>
 			<option value="region" selected="true">Editable Region</option>
 		</parameter>
+		<parameter name="tablist1" type="select" prompt="Tab List Category 1" alt="Select the category you would like displayed for the first tab." group="Everyone">
+			<option value="News" selected="true">News</option>
+			<option value="Events" selected="false">Events</option>
+		</parameter>
+		<parameter name="tablist2" type="select" prompt="Tab List Category 2" alt="Select the category you would like displayed for the second tab." group="Everyone">
+			<option value="News" selected="false">News</option>
+			<option value="Events" selected="true">Events</option>
+		</parameter>
+		<parameter name="tablist-limit" group="Everyone" prompt="Posts per Tab" alt="Determines the amount of posts to display in tablist.">3</parameter>
+		<!-- Blog Options -->
 		<parameter section="Blog Options" name="disqus-enable" type="select" prompt="Enable Disqus Comments" alt="Turns on/off the disqus comments displayed at the bottom of the post. These comments should only be turned on when the blog post is ready to go live." group="Admin">
 			<option value="true" selected="false">On</option>
 			<option value="false" selected="true">Off</option>
 		</parameter>
 		<parameter name="date-time" type="datetime" format="iso" prompt="Post Date" alt="Date for the article posted." group="Everyone">{{post-date}}</parameter>
+
+    <!-- Amazing Quotes -->
+    <parameter name="quote-toggle" group="Everyone" prompt="Include" alt="Include Amazing Stories Quote" type="radio" section="Amazing Stories Quote">
+      <option value="show" selected="false">Show</option>
+      <option value="hide" selected="true">Hide</option>
+    </parameter>
+
+    <!-- Photo Gallery Properties -->
+    <parameter section="LDP Gallery" name="galleryType" type="select" group="Everyone" prompt="Gallery Type" alt="Select the output type for gallery assets on this page.">
+      <option value="bxSlider" selected="false">BX Slider</option>
+      <option value="FlexSlider" selected="false">Flex Slider</option>
+      <option value="MagnificPopUp" selected="false">Magnific PopUp</option>
+      <option value="PrettyPhoto" selected="true">Pretty Photo</option>
+      <option value="FancyBox" selected="false">Fancy Box</option>
+    </parameter>
 	</ouc:properties>
 
 	<!-- Meta page properites. Defines the meta elements that are placed in the head of the HTML document. -->
