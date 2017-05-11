@@ -34,7 +34,10 @@
 			<option value="Events" selected="true">Events</option>
 		</parameter>
 		<parameter name="tablist-limit" group="Everyone" prompt="Posts per Tab" alt="Determines the amount of posts to display in tablist.">3</parameter>
-    <parameter name="audiencelist" type="checkbox" prompt="Audience" alt="Check the audiences associated with this article." group="Everyone">
+        
+    <!-- Blog Options -->
+    <parameter name="date-time" type="datetime" format="iso" prompt="Post Date" alt="Date for the article posted." group="Everyone">{{post-date}}</parameter>
+    <parameter section="Blog Options" name="audiencelist" type="checkbox" prompt="Audience" alt="Check the audiences associated with this article." group="Everyone">
       <option value="Public" selected="false">Public</option>
       <option value="Alumni" selected="false">Alumni</option>
       <option value="Staff and Faculty" selected="false">Staff and Faculty</option>
@@ -66,13 +69,11 @@
       <option value="Research" selected="false">Web - Research</option>
       {{post-categories}}
     </parameter>
-    
-    <!-- Blog Options -->
-		<parameter section="Blog Options" name="disqus-enable" type="select" prompt="Enable Disqus Comments" alt="Turns on/off the disqus comments displayed at the bottom of the post. These comments should only be turned on when the blog post is ready to go live." group="Admin">
+
+		<parameter name="disqus-enable" type="select" prompt="Enable Disqus Comments" alt="Turns on/off the disqus comments displayed at the bottom of the post. These comments should only be turned on when the blog post is ready to go live." group="Admin">
 			<option value="true" selected="false">On</option>
 			<option value="false" selected="true">Off</option>
 		</parameter>
-		<parameter name="date-time" type="datetime" format="iso" prompt="Post Date" alt="Date for the article posted." group="Everyone">{{post-date}}</parameter>
 
     <!-- Amazing Quotes -->
     <parameter name="quote-toggle" group="Everyone" prompt="Include" alt="Include Amazing Stories Quote" type="radio" section="Amazing Stories Quote">
