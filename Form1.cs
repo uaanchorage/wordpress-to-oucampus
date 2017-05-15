@@ -202,14 +202,19 @@ namespace WordPressToOUCampus
                 Directory.CreateDirectory(postDirectory);
 
                 // get filename
-                string postSlug = post.Slug.Replace("_", "-");
-                int postId;
+                string postSlug = post.Slug.ToLower().Replace("_", "-");
+                if (postSlug.StartsWith("-"))
+                    postSlug = postSlug.Substring(1);
+
                 // if slug is just the numeric post id, create slug from title
+                int postId;
                 if (int.TryParse(postSlug, out postId))
                 {
                     postSlug = post.Title.ToLower().Replace(" ", "-");
                 }
-                postSlug = Regex.Replace(postSlug, @"[^0-9a-zA-Z\-]", "");
+
+                // remove everything but alpha-numeric and hyphen
+                postSlug = Regex.Replace(postSlug, @"[^0-9a-z\-]", "");
 
                 // write .pcf file
                 string filePath = postDirectory + "\\" + postSlug + ".pcf";
