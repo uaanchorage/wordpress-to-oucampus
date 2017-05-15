@@ -83,7 +83,7 @@ More information here: http://support.omniupdate.com/oucampus9/development/templ
 		<ouc:editor csspath="/_resources/ou/editor/content.css" cssmenu="/_resources/ou/editor/styles.txt" wysiwyg-class="rightcontent quicklinks" width="1020" />
 	</ouc:div>
 
-	<ouc:div label="right-content" group="Everyone" button-text="Content Region">
+	<ouc:div label="right-content" group="Everyone" button-text="Sidebar Content">
         <ouc:editor csspath="/_resources/ou/editor/content.css" cssmenu="/_resources/ou/editor/styles.txt" width="1020" wysiwyg-class="rightcontent"/>
     </ouc:div>
 </document>
