@@ -194,9 +194,11 @@ namespace WordPressToOUCampus
 
                 outputFile = outputFile.Replace("{{post-body}}", postBody);
 
-                // organize posts into directories based on (first) category
-                string category = post.Categories.FirstOrDefault()?.Slug ?? "uncategorized";
-                string postDirectory = txtOutputDirectory.Text + "\\posts\\" + category;
+                //// organize posts into directories based on (first) category
+                //string category = post.Categories.FirstOrDefault()?.Slug ?? "uncategorized";
+                //string postDirectory = txtOutputDirectory.Text + "\\posts\\" + category;
+                
+                string postDirectory = txtOutputDirectory.Text + "\\posts";
                 Directory.CreateDirectory(postDirectory);
 
                 // get filename
