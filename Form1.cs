@@ -146,7 +146,7 @@ namespace WordPressToOUCampus
                 outputFile = outputFile.Replace("{{post-author-email}}", post.Author.Email);
                 outputFile = outputFile.Replace("{{post-tags}}", string.Join(",", post.Tags.Select(c => c.Name)));
                 outputFile = outputFile.Replace("{{post-image-display}}", post.FeaturedImage != null ? "img" : "none");
-                outputFile = outputFile.Replace("{{post-image-src}}", post.FeaturedImage?.Url);
+                outputFile = outputFile.Replace("{{post-image-src}}", post.FeaturedImage?.Url.Replace("localhost/greenandgold", "greenandgold.uaa.alaska.edu"));
                 outputFile = outputFile.Replace("{{post-image-alt}}", post.FeaturedImage?.Title);
 
                 // add code to map post audience
