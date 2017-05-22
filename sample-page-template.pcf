@@ -6,12 +6,9 @@
 
 <document xmlns:ouc="http://omniupdate.com/XSL/Variables">
 
-    <headcode></headcode>
-    <!-- before closing head tag -->
-    <bodycode></bodycode>
-    <!-- after opening body tag -->
-    <footcode></footcode>
-    <!-- before closing body tag -->
+    <headcode></headcode> <!-- before closing head tag -->
+    <bodycode></bodycode> <!-- after opening body tag -->
+    <footcode></footcode> <!-- before closing body tag -->
 
     <parameter name="pagetype">interior</parameter>
 
