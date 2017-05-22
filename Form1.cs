@@ -144,14 +144,39 @@ namespace WordPressToOUCampus
                 outputFile = outputFile.Replace("{{post-excerpt}}", post.Excerpt);
                 outputFile = outputFile.Replace("{{post-author}}", post.Author.DisplayName);
                 outputFile = outputFile.Replace("{{post-author-email}}", post.Author.Email);
-                outputFile = outputFile.Replace("{{post-tags}}", string.Join(",", post.Tags.Select(c => c.Name)));
+                outputFile = outputFile.Replace("{{post-tags}}", string.Join(",", post.Tags.Select(t => t.Name)));
                 outputFile = outputFile.Replace("{{post-image-display}}", post.FeaturedImage != null ? "img" : "none");
                 outputFile = outputFile.Replace("{{post-image-src}}", post.FeaturedImage?.Url.Replace("localhost/greenandgold", "greenandgold.uaa.alaska.edu"));
                 outputFile = outputFile.Replace("{{post-image-alt}}", post.FeaturedImage?.Title);
 
-                // add code to map post audience
+                var categories = new Dictionary<string, string>
+                {
+                    { "Announcements", "Seawolf Daily - Announcements" },
+                    { "Special", "Seawolf Daily - Special" },
+                    { "Classifieds", "Seawolf Daily - Classifieds" },
+                    { "Graphics Advertisements", "Seawolf Daily - Graphics Advertisements" },
+                    { "Human Resources", "Seawolf Daily - Human Resources" },
+                    { "Opportunities", "Seawolf Daily - Opportunities" },
+                    { "Student News", "Seawolf Student - Student News" },
+                    { "Student Opportunities", "Seawolf Student - Student Opportunities" },
+                    { "UAA News", "Seawolf Student - UAA News" },
+                    { "Featured", "Web - Featured" },
+                    { "Impact", "Web - Impact" },
+                    { "I am UAA", "Web - I am UAA" },
+                    { "Research", "Web - Research" }
+                };
 
-                // add code to map post categories
+                string postCategories = "";
+                foreach (string key in categories.Keys)
+                {
+                    postCategories += $"<option value=\"{key}\" selected=\"{post.Categories.Any(c => c.Name == key).ToString().ToLower()}\">{categories[key]}</option>\n\t\t\t";
+                }
+
+                outputFile = outputFile.Replace("{{post-categories}}", postCategories);
+
+                // TODO: add code to map post audience
+
+                // TODO: add code to map post publication
 
                 // cleanup HTML encoding in title
                 string postTitle = post.Title;
