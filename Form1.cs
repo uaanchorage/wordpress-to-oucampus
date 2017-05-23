@@ -149,12 +149,18 @@ namespace WordPressToOUCampus
                 outputFile = outputFile.Replace("{{post-image-src}}", post.FeaturedImage?.Url.Replace("localhost/greenandgold", "greenandgold.uaa.alaska.edu"));
                 outputFile = outputFile.Replace("{{post-image-alt}}", post.FeaturedImage?.Title);
 
+                // change category "University News" to Impact
+                int catIndex = post.Categories.FindIndex(c => c.Name == "University News");
+                if (catIndex >= 0)
+                    post.Categories[catIndex] = new Category { Name = "Impact" };
+
+                // map post categories
                 var categories = new Dictionary<string, string>
                 {
                     { "Announcements", "Seawolf Daily - Announcements" },
                     { "Special", "Seawolf Daily - Special" },
                     { "Classifieds", "Seawolf Daily - Classifieds" },
-                    { "Graphics Advertisements", "Seawolf Daily - Graphics Advertisements" },
+                    { "Graphic Advertisement", "Seawolf Daily - Graphics Advertisements" },
                     { "Human Resources", "Seawolf Daily - Human Resources" },
                     { "Opportunities", "Seawolf Daily - Opportunities" },
                     { "Student News", "Seawolf Student - Student News" },
@@ -162,14 +168,14 @@ namespace WordPressToOUCampus
                     { "UAA News", "Seawolf Student - UAA News" },
                     { "Featured", "Web - Featured" },
                     { "Impact", "Web - Impact" },
-                    { "I am UAA", "Web - I am UAA" },
+                    { "I Am UAA", "Web - I am UAA" },
                     { "Research", "Web - Research" }
                 };
 
                 string postCategories = "";
                 foreach (string key in categories.Keys)
                 {
-                    postCategories += $"<option value=\"{key}\" selected=\"{post.Categories.Any(c => c.Name == key).ToString().ToLower()}\">{categories[key]}</option>\n\t\t\t";
+                    postCategories += $"<option value=\"{key}\" selected=\"{post.Categories.Any(c => c.Name.Equals(key, StringComparison.OrdinalIgnoreCase)).ToString().ToLower()}\">{categories[key]}</option>\n\t\t\t";
                 }
 
                 outputFile = outputFile.Replace("{{post-categories}}", postCategories);
