@@ -154,6 +154,11 @@ namespace WordPressToOUCampus
                 if (catIndex >= 0)
                     post.Categories[catIndex] = new Category { Name = "Impact" };
 
+                // change category "Seawolf Weekly" to "Seawolf Monthly"
+                catIndex = post.Categories.FindIndex(c => c.Name == "Seawolf Weekly");
+                if (catIndex >= 0)
+                    post.Categories[catIndex] = new Category { Name = "Seawolf Monthly" };
+
                 // map post categories
                 var categories = new Dictionary<string, string>
                 {
@@ -180,9 +185,26 @@ namespace WordPressToOUCampus
 
                 outputFile = outputFile.Replace("{{post-categories}}", postCategories);
 
-                // TODO: add code to map post audience
+                // map post publications
+                var publications = new Dictionary<string, string>
+                {
+                    { "Alumni Howl", "Alumni Howl" },
+                    { "College of Fellows", "College of Fellows" },
+                    { "Seawolf Daily", "Seawolf Daily" },
+                    { "Seawolf Student", "Seawolf Student" },
+                    { "Seawolf Monthly", "Seawolf Monthly" },
+                    { "Web", "Web" }
+                };
 
-                // TODO: add code to map post publication
+                string postPublications = "";
+                foreach (string key in publications.Keys)
+                {
+                    postPublications += $"<option value=\"{key}\" selected=\"{post.Categories.Any(c => c.Name.Equals(key, StringComparison.OrdinalIgnoreCase)).ToString().ToLower()}\">{publications[key]}</option>\n\t\t\t";
+                }
+
+                outputFile = outputFile.Replace("{{post-publications}}", postPublications);
+
+                // TODO: add code to map post audience
 
                 // cleanup HTML encoding in title
                 string postTitle = post.Title;

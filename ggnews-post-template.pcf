@@ -44,12 +44,7 @@
             <option value="Students" selected="false">Students</option>
         </parameter>
         <parameter name="publicationlist" type="checkbox" prompt="Publication" alt="Check the publication associated with this article." group="Everyone">
-            <option value="Alumni Howl" selected="false">Alumni Howl</option>
-            <option value="College of Fellows" selected="false">College of Fellows</option>
-            <option value="Seawolf Daily" selected="false">Seawolf Daily</option>
-            <option value="Seawolf Student" selected="false">Seawolf Student</option>
-            <option value="Seawolf Monthly" selected="false">Seawolf Monthly</option>
-            <option value="Web" selected="false">Website</option>
+            {{post-publications}}
         </parameter>
         <parameter name="catlist" type="checkbox" prompt="Categories" alt="Check the categories you would like displayed for the category list." group="Everyone">
             {{post-categories}}
