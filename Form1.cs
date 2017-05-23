@@ -144,14 +144,39 @@ namespace WordPressToOUCampus
                 outputFile = outputFile.Replace("{{post-excerpt}}", post.Excerpt);
                 outputFile = outputFile.Replace("{{post-author}}", post.Author.DisplayName);
                 outputFile = outputFile.Replace("{{post-author-email}}", post.Author.Email);
-                outputFile = outputFile.Replace("{{post-tags}}", string.Join(",", post.Tags.Select(c => c.Name)));
+                outputFile = outputFile.Replace("{{post-tags}}", string.Join(",", post.Tags.Select(t => t.Name)));
                 outputFile = outputFile.Replace("{{post-image-display}}", post.FeaturedImage != null ? "img" : "none");
-                outputFile = outputFile.Replace("{{post-image-src}}", post.FeaturedImage?.Url);
+                outputFile = outputFile.Replace("{{post-image-src}}", post.FeaturedImage?.Url.Replace("localhost/greenandgold", "greenandgold.uaa.alaska.edu"));
                 outputFile = outputFile.Replace("{{post-image-alt}}", post.FeaturedImage?.Title);
 
-                // add code to map post audience
+                var categories = new Dictionary<string, string>
+                {
+                    { "Announcements", "Seawolf Daily - Announcements" },
+                    { "Special", "Seawolf Daily - Special" },
+                    { "Classifieds", "Seawolf Daily - Classifieds" },
+                    { "Graphics Advertisements", "Seawolf Daily - Graphics Advertisements" },
+                    { "Human Resources", "Seawolf Daily - Human Resources" },
+                    { "Opportunities", "Seawolf Daily - Opportunities" },
+                    { "Student News", "Seawolf Student - Student News" },
+                    { "Student Opportunities", "Seawolf Student - Student Opportunities" },
+                    { "UAA News", "Seawolf Student - UAA News" },
+                    { "Featured", "Web - Featured" },
+                    { "Impact", "Web - Impact" },
+                    { "I am UAA", "Web - I am UAA" },
+                    { "Research", "Web - Research" }
+                };
 
-                // add code to map post categories
+                string postCategories = "";
+                foreach (string key in categories.Keys)
+                {
+                    postCategories += $"<option value=\"{key}\" selected=\"{post.Categories.Any(c => c.Name == key).ToString().ToLower()}\">{categories[key]}</option>\n\t\t\t";
+                }
+
+                outputFile = outputFile.Replace("{{post-categories}}", postCategories);
+
+                // TODO: add code to map post audience
+
+                // TODO: add code to map post publication
 
                 // cleanup HTML encoding in title
                 string postTitle = post.Title;
@@ -194,20 +219,27 @@ namespace WordPressToOUCampus
 
                 outputFile = outputFile.Replace("{{post-body}}", postBody);
 
-                // organize posts into directories based on (first) category
-                string category = post.Categories.FirstOrDefault()?.Slug ?? "uncategorized";
-                string postDirectory = txtOutputDirectory.Text + "\\posts\\" + category;
+                //// organize posts into directories based on (first) category
+                //string category = post.Categories.FirstOrDefault()?.Slug ?? "uncategorized";
+                //string postDirectory = txtOutputDirectory.Text + "\\posts\\" + category;
+                
+                string postDirectory = txtOutputDirectory.Text + "\\posts";
                 Directory.CreateDirectory(postDirectory);
 
                 // get filename
-                string postSlug = post.Slug.Replace("_", "-");
-                int postId;
+                string postSlug = post.Slug.ToLower().Replace("_", "-");
+                if (postSlug.StartsWith("-"))
+                    postSlug = postSlug.Substring(1);
+
                 // if slug is just the numeric post id, create slug from title
+                int postId;
                 if (int.TryParse(postSlug, out postId))
                 {
                     postSlug = post.Title.ToLower().Replace(" ", "-");
                 }
-                postSlug = Regex.Replace(postSlug, @"[^0-9a-zA-Z\-]", "");
+
+                // remove everything but alpha-numeric and hyphen
+                postSlug = Regex.Replace(postSlug, @"[^0-9a-z\-]", "");
 
                 // write .pcf file
                 string filePath = postDirectory + "\\" + postSlug + ".pcf";

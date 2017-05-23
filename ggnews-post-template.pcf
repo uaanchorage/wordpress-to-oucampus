@@ -1,127 +1,112 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <?pcf-stylesheet site="anchorage" path="/_ouresources/xsl/blog/post.xsl" title="Blog Post" extension="cshtml"?>
 <?pcf-stylesheet site="anchorage" path="/_ouresources/xsl/blog/post-xml.xsl" title="Blog XML" extension=".blog.xml" alternate="yes" ?>
-<!DOCTYPE document SYSTEM "http://commons.omniupdate.com/dtd/standard.dtd"> 
+<!DOCTYPE document SYSTEM "http://commons.omniupdate.com/dtd/standard.dtd">
 
 <document xmlns:ouc="http://omniupdate.com/XSL/Variables">
 
-	<!-- Best practice is to have a couple common empty nodes in case a page needs to have page-unique code. These are only editable in source and therefore admins. -->
-	<headcode></headcode> <!-- Output just before closing head tag. -->
-	<bodycode></bodycode> <!-- Output just after opening body tag. -->
-	<footcode></footcode> <!-- Output just before closing body tag. -->
+    <!-- Best practice is to have a couple common empty nodes in case a page needs to have page-unique code. These are only editable in source and therefore admins. -->
+    <headcode></headcode> <!-- Output just before closing head tag. -->
+    <bodycode></bodycode> <!-- Output just after opening body tag. -->
+    <footcode></footcode> <!-- Output just before closing body tag. -->
 
 	<parameter name="pagetype">blog-news</parameter>
 
-	<!-- General page properties. Defines user options for page layout. -->
-	<ouc:properties label="config">
-		<!-- Right Column Content -->
-		<parameter section="Right Column Options" name="regions" type="checkbox" prompt="Right Column" alt="Check the boxes to enable the right column content regions." group="Everyone">
-      <option value="nav" selected="false">Main Interior Page Navigation</option>
-      <option value="Recommended Stories" selected="true">Recommended Stories</option>
-      <option value="Social Share" selected="true">Social Share</option>
-      <option value="tablist" selected="false">Tab List</option>
-      <option value="catlist" selected="false">Category List</option>
-      <option value="region" selected="true">Editable Region</option>
-		</parameter>
-    <parameter name="story-categories" group="Everyone" prompt="Recommended Categories" alt="Determines the categories of posts to display in recommneded stories.">Featured, I am UAA</parameter>
-    <parameter name="story-limit" group="Everyone" prompt="Recommended Stories" alt="Determines the amount of posts to display in recommneded stories.">3</parameter>
-		<parameter name="tablist1" type="select" prompt="Tab List Category 1" alt="Select the category you would like displayed for the first tab." group="Everyone">
-			<option value="News" selected="true">News</option>
-			<option value="Events" selected="false">Events</option>
-		</parameter>
-		<parameter name="tablist2" type="select" prompt="Tab List Category 2" alt="Select the category you would like displayed for the second tab." group="Everyone">
-			<option value="News" selected="false">News</option>
-			<option value="Events" selected="true">Events</option>
-		</parameter>
-		<parameter name="tablist-limit" group="Everyone" prompt="Posts per Tab" alt="Determines the amount of posts to display in tablist.">3</parameter>
-        
-    <!-- Blog Options -->
-    <parameter name="date-time" type="datetime" format="iso" prompt="Post Date" alt="Date for the article posted." group="Everyone">{{post-date}}</parameter>
-    <parameter section="Blog Options" name="audiencelist" type="checkbox" prompt="Audience" alt="Check the audiences associated with this article." group="Everyone">
-      <option value="Public" selected="false">Public</option>
-      <option value="Alumni" selected="false">Alumni</option>
-      <option value="Staff and Faculty" selected="false">Staff and Faculty</option>
-      <option value="Students" selected="false">Students</option>
-      {{post-audience}}
-    </parameter>
-    <parameter name="publicationlist" type="checkbox" prompt="Publication" alt="Check the publication associated with this article." group="Everyone">
-      <option value="Alumni Howl" selected="false">Alumni Howl</option>
-      <option value="College of Fellows" selected="false">College of Fellows</option>
-      <option value="Seawolf Daily" selected="false">Seawolf Daily</option>
-      <option value="Seawolf Student" selected="false">Seawolf Student</option>
-      <option value="Seawolf Monthly" selected="false">Seawolf Monthly</option>
-      <option value="Web" selected="false">Website</option>
-      {{post-publication}}
-    </parameter>
-    <parameter name="catlist" type="checkbox" prompt="Categories" alt="Check the categories you would like displayed for the category list." group="Everyone">
-      <option value="Announcements" selected="false">Seawolf Daily - Announcements</option>
-      <option value="Special" selected="false">Seawolf Daily - Special</option>
-      <option value="Classifieds" selected="false">Seawolf Daily - Classifieds</option>
-      <option value="Graphics Advertisements" selected="false">Seawolf Daily - Graphics Advertisements</option>
-      <option value="Human Resources" selected="false">Seawolf Daily - Human Resources</option>
-      <option value="Opportunities" selected="false">Seawolf Daily - Opportunities</option>
-      <option value="Student News" selected="false">Seawolf Student - Student News</option>
-      <option value="Student Opportunities" selected="false">Seawolf Student - Student Opportunities</option>
-      <option value="UAA News" selected="false">Seawolf Student - UAA News</option>
-      <option value="Featured" selected="false">Web - Featured</option>
-      <option value="Impact" selected="false">Web - Impact</option>
-      <option value="I am UAA" selected="false">Web - I am UAA</option>
-      <option value="Research" selected="false">Web - Research</option>
-      {{post-categories}}
-    </parameter>
+    <!-- General page properties. Defines user options for page layout. -->
+    <ouc:properties label="config">
+        <!-- Right Column Content -->
+        <parameter section="Right Column Options" name="regions" type="checkbox" prompt="Right Column" alt="Check the boxes to enable the right column content regions." group="Everyone">
+            <option value="nav" selected="false">Main Interior Page Navigation</option>
+            <option value="Recommended Stories" selected="true">Recommended Stories</option>
+            <option value="Social Share" selected="true">Social Share</option>
+            <option value="tablist" selected="false">Tab List</option>
+            <option value="catlist" selected="false">Category List</option>
+            <option value="region" selected="true">Editable Region</option>
+        </parameter>
+        <parameter name="story-categories" group="Everyone" prompt="Recommended Categories" alt="Determines the categories of posts to display in recommneded stories.">Featured, I am UAA</parameter>
+        <parameter name="story-limit" group="Everyone" prompt="Recommended Stories" alt="Determines the amount of posts to display in recommneded stories.">3</parameter>
+        <parameter name="tablist1" type="select" prompt="Tab List Category 1" alt="Select the category you would like displayed for the first tab." group="Everyone">
+            <option value="News" selected="true">News</option>
+            <option value="Events" selected="false">Events</option>
+        </parameter>
+        <parameter name="tablist2" type="select" prompt="Tab List Category 2" alt="Select the category you would like displayed for the second tab." group="Everyone">
+            <option value="News" selected="false">News</option>
+            <option value="Events" selected="true">Events</option>
+        </parameter>
+        <parameter name="tablist-limit" group="Everyone" prompt="Posts per Tab" alt="Determines the amount of posts to display in tablist.">3</parameter>
 
-		<parameter name="disqus-enable" type="select" prompt="Enable Disqus Comments" alt="Turns on/off the disqus comments displayed at the bottom of the post. These comments should only be turned on when the blog post is ready to go live." group="Admin">
-			<option value="true" selected="false">On</option>
-			<option value="false" selected="true">Off</option>
-		</parameter>
+        <!-- Blog Options -->
+        <parameter name="date-time" type="datetime" format="iso" prompt="Post Date" alt="Date for the article posted." group="Everyone">{{post-date}}</parameter>
+        <parameter section="Blog Options" name="audiencelist" type="checkbox" prompt="Audience" alt="Check the audiences associated with this article." group="Everyone">
+            <option value="Public" selected="false">Public</option>
+            <option value="Alumni" selected="false">Alumni</option>
+            <option value="Staff and Faculty" selected="false">Staff and Faculty</option>
+            <option value="Students" selected="false">Students</option>
+        </parameter>
+        <parameter name="publicationlist" type="checkbox" prompt="Publication" alt="Check the publication associated with this article." group="Everyone">
+            <option value="Alumni Howl" selected="false">Alumni Howl</option>
+            <option value="College of Fellows" selected="false">College of Fellows</option>
+            <option value="Seawolf Daily" selected="false">Seawolf Daily</option>
+            <option value="Seawolf Student" selected="false">Seawolf Student</option>
+            <option value="Seawolf Monthly" selected="false">Seawolf Monthly</option>
+            <option value="Web" selected="false">Website</option>
+        </parameter>
+        <parameter name="catlist" type="checkbox" prompt="Categories" alt="Check the categories you would like displayed for the category list." group="Everyone">
+            {{post-categories}}
+        </parameter>
 
-    <!-- Amazing Quotes -->
-    <parameter name="quote-toggle" group="Everyone" prompt="Include" alt="Include Amazing Stories Quote" type="radio" section="Amazing Stories Quote">
-      <option value="show" selected="false">Show</option>
-      <option value="hide" selected="true">Hide</option>
-    </parameter>
+        <parameter name="disqus-enable" type="select" prompt="Enable Disqus Comments" alt="Turns on/off the disqus comments displayed at the bottom of the post. These comments should only be turned on when the blog post is ready to go live." group="Admin">
+            <option value="true" selected="false">On</option>
+            <option value="false" selected="true">Off</option>
+        </parameter>
 
-    <!-- Photo Gallery Properties -->
-    <parameter section="LDP Gallery" name="galleryType" type="select" group="Everyone" prompt="Gallery Type" alt="Select the output type for gallery assets on this page.">
-      <option value="bxSlider" selected="false">BX Slider</option>
-      <option value="FlexSlider" selected="false">Flex Slider</option>
-      <option value="MagnificPopUp" selected="false">Magnific PopUp</option>
-      <option value="PrettyPhoto" selected="true">Pretty Photo</option>
-      <option value="FancyBox" selected="false">Fancy Box</option>
-    </parameter>
-	</ouc:properties>
+        <!-- Amazing Quotes -->
+        <parameter name="quote-toggle" group="Everyone" prompt="Include" alt="Include Amazing Stories Quote" type="radio" section="Amazing Stories Quote">
+            <option value="show" selected="false">Show</option>
+            <option value="hide" selected="true">Hide</option>
+        </parameter>
 
-	<!-- Meta page properites. Defines the meta elements that are placed in the head of the HTML document. -->
-	<ouc:properties label="metadata">
-		<title>{{post-title}}</title>
-		<meta name="Description" content="{{post-excerpt}}" />
-	</ouc:properties>
+        <!-- Photo Gallery Properties -->
+        <parameter section="LDP Gallery" name="galleryType" type="select" group="Everyone" prompt="Gallery Type" alt="Select the output type for gallery assets on this page.">
+            <option value="bxSlider" selected="false">BX Slider</option>
+            <option value="FlexSlider" selected="false">Flex Slider</option>
+            <option value="MagnificPopUp" selected="false">Magnific PopUp</option>
+            <option value="PrettyPhoto" selected="true">Pretty Photo</option>
+            <option value="FancyBox" selected="false">Fancy Box</option>
+        </parameter>
+    </ouc:properties>
 
-	<post-info>	
-		<ouc:div label="post-title" group="Everyone" button="hide"><ouc:multiedit type="text" prompt="Post Title" alt="Title of the post; will show up on the main content region as well as the listing page. To add a line break, enter '//'." section="General Blog Post Information"/>{{post-title}}</ouc:div>
-		<ouc:div label="post-author" group="Everyone" button="hide"><ouc:multiedit type="text" prompt="Post Author" alt="Author of the post. Will display below the title and on the listing page."/>{{post-author}}</ouc:div>
-		<ouc:div label="post-author-title" group="Everyone" button="hide"><ouc:multiedit type="text" prompt="Author Title" alt="Title of the author."/></ouc:div>
-		<ouc:div label="post-email" group="Everyone" button="hide"><ouc:multiedit type="text" prompt="Author Email" alt="Email address of the author. If not defined this will use the current OU Campus user email."/>{{post-author-email}}</ouc:div>
-		<ouc:div label="post-tags" group="Everyone" button="hide"><ouc:multiedit type="text" prompt="Post Tags" alt="Define the tags/categories that defines the content of the post, separated by commas. Example: Lorem ipsum, dolor sit amet"/>{{post-tags}}</ouc:div>	
-		<ouc:div label="post-display" group="Everyone" button="hide"><ouc:multiedit type="radio" prompt="Display Post" alt="Determines whether to display this post on the Listing Page feeds." options="Display:true;Do Not Display:false;" section="Listing Page Post Information"/>true</ouc:div>
-		<ouc:div label="post-description" group="Everyone" button="hide"><ouc:multiedit type="textarea" prompt="Post Description" alt="Description of the post that will show up in the listing page." rows="8"/>{{post-excerpt}}</ouc:div>
-		<ouc:div label="post-img" group="Everyone" button="hide"><ouc:multiedit type="radio" prompt="Use Image" alt="Determines whether Listing Pages will use an image for this post." options="Image:img;None:none;"/>{{post-image-display}}</ouc:div>
-		<ouc:div label="post-image" group="Everyone" button="hide"><ouc:multiedit type="image" prompt="Post Image" alt="Image that will displayed next to the post on the Listing Pages."/><img src="{{post-image-src}}" alt="{{post-image-alt}}" /></ouc:div>	
-	</post-info>
+    <!-- Meta page properites. Defines the meta elements that are placed in the head of the HTML document. -->
+    <ouc:properties label="metadata">
+        <title>{{post-title}}</title>
+        <meta name="Description" content="{{post-excerpt}}" />
+    </ouc:properties>
 
-	<!-- Editable region. An ouc:div defines an editable region so a user can edit content within the WYSIWYG editor. Every ouc:div must have a unique label. 
-The ouc:editor defines the CSS styling in the WYSIWYG editor for this editable region.
-More information here: http://support.omniupdate.com/oucampus9/development/templating/page-tagging/tagging-reference.html#editable -->
-	<ouc:div label="maincontent" group="Everyone" button-text="Main Content">
-		<ouc:editor csspath="/_resources/ou/editor/content.css" cssmenu="/_resources/ou/editor/styles.txt" wysiwyg-class="maincontent layout-1" width="1020" />
-		{{post-body}}
-	</ouc:div>
+    <post-info>
+        <ouc:div label="post-title" group="Everyone" button="hide"><ouc:multiedit type="text" prompt="Post Title" alt="Title of the post; will show up on the main content region as well as the listing page. To add a line break, enter '//'." section="General Blog Post Information"/>{{post-title}}</ouc:div>
+        <ouc:div label="post-author" group="Everyone" button="hide"><ouc:multiedit type="text" prompt="Post Author" alt="Author of the post. Will display below the title and on the listing page."/>{{post-author}}</ouc:div>
+        <ouc:div label="post-author-title" group="Everyone" button="hide"><ouc:multiedit type="text" prompt="Author Title" alt="Title of the author."/></ouc:div>
+        <ouc:div label="post-email" group="Everyone" button="hide"><ouc:multiedit type="text" prompt="Author Email" alt="Email address of the author. If not defined this will use the current OU Campus user email."/>{{post-author-email}}</ouc:div>
+        <ouc:div label="post-tags" group="Everyone" button="hide"><ouc:multiedit type="text" prompt="Post Tags" alt="Define the tags that defines the content of the post, separated by commas. Example: Lorem ipsum, dolor sit amet"/>{{post-tags}}</ouc:div>
+        <ouc:div label="post-display" group="Everyone" button="hide"><ouc:multiedit type="radio" prompt="Display Post" alt="Determines whether to display this post on the Listing Page feeds." options="Display:true;Do Not Display:false;" section="Listing Page Post Information"/>true</ouc:div>
+        <ouc:div label="post-description" group="Everyone" button="hide"><ouc:multiedit type="textarea" prompt="Post Description" alt="Description of the post that will show up in the listing page." rows="8"/>{{post-excerpt}}</ouc:div>
+        <ouc:div label="post-img" group="Everyone" button="hide"><ouc:multiedit type="radio" prompt="Use Image" alt="Determines whether Listing Pages will use an image for this post." options="Image:img;None:none;"/>{{post-image-display}}</ouc:div>
+        <ouc:div label="post-image" group="Everyone" button="hide"><ouc:multiedit type="image" prompt="Post Image" alt="Image that will displayed next to the post on the Listing Pages."/><img src="{{post-image-src}}" alt="{{post-image-alt}}" /></ouc:div>
+    </post-info>
 
-	<ouc:div label="panel" group="Everyone" button-text="Panel Region">
-		<ouc:editor csspath="/_resources/ou/editor/content.css" cssmenu="/_resources/ou/editor/styles.txt" wysiwyg-class="rightcontent quicklinks" width="1020" />
-	</ouc:div>
+    <!-- Editable region. An ouc:div defines an editable region so a user can edit content within the WYSIWYG editor. Every ouc:div must have a unique label. 
+         The ouc:editor defines the CSS styling in the WYSIWYG editor for this editable region.
+         More information here: http://support.omniupdate.com/oucampus9/development/templating/page-tagging/tagging-reference.html#editable -->
+    <ouc:div label="maincontent" group="Everyone" button-text="Main Content">
+        <ouc:editor csspath="/_resources/ou/editor/content.css" cssmenu="/_resources/ou/editor/styles.txt" wysiwyg-class="maincontent layout-1" width="1020" />
+        {{post-body}}
+    </ouc:div>
 
-	<ouc:div label="right-content" group="Everyone" button-text="Content Region">
+    <ouc:div label="panel" group="Everyone" button-text="Panel Region">
+        <ouc:editor csspath="/_resources/ou/editor/content.css" cssmenu="/_resources/ou/editor/styles.txt" wysiwyg-class="rightcontent quicklinks" width="1020" />
+    </ouc:div>
+
+    <ouc:div label="right-content" group="Everyone" button-text="Content Region">
         <ouc:editor csspath="/_resources/ou/editor/content.css" cssmenu="/_resources/ou/editor/styles.txt" width="1020" wysiwyg-class="rightcontent"/>
     </ouc:div>
 </document>
