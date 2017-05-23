@@ -10,7 +10,7 @@
 	<bodycode></bodycode> <!-- Output just after opening body tag. -->
 	<footcode></footcode> <!-- Output just before closing body tag. -->
 
-	<parameter name="pagetype">blog-main</parameter>
+	<parameter name="pagetype">blog-news</parameter>
 
 	<!-- General page properties. Defines user options for page layout. -->
 	<ouc:properties label="config">
