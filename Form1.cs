@@ -229,6 +229,19 @@ namespace WordPressToOUCampus
                 postBody = postBody.Replace('\u2032', '\'');
                 postBody = postBody.Replace('\u2033', '\"');
 
+                // remove empty paragraphs
+                postBody = Regex.Replace(postBody, "\\r?\\n&nbsp;\\r?\\n", "");
+
+                // fix missing <p> tags in body. temporarily insert as [p] so they don't interfere with other replacements.
+                postBody = "[p]" + postBody + "[/p]";
+                postBody = Regex.Replace(postBody, "\\r?\\n<(h2|h3|h4|h5|h6|ul|ol)>", "[/p]\r\n<$1>");
+                postBody = Regex.Replace(postBody, "</(h2|h3|h4|h5|h6|ul|ol)>\\r?\\n", "</$1>\r\n[p]");
+                postBody = Regex.Replace(postBody, "\\r?\\n\\r?\\n", "[/p]\r\n[p]");
+
+                // finally, replace [p] with actual <p> tag
+                postBody = postBody.Replace("[p]", "<p>");
+                postBody = postBody.Replace("[/p]", "</p>");
+
                 // remove any explicit height/width declarations
                 postBody = Regex.Replace(postBody, "\\s+width=\"[0-9]+\"", "");
                 postBody = Regex.Replace(postBody, "\\s+height=\"[0-9]+\"", "");
@@ -236,6 +249,8 @@ namespace WordPressToOUCampus
                 // replace [caption] shortcodes with <div>
                 if (postBody.Contains("[caption"))
                 {
+                    postBody = postBody.Replace("<p>[caption", "[caption");
+                    postBody = postBody.Replace("[/caption]</p>", "[/caption]");
                     postBody = postBody.Replace("[caption", "<div");
                     postBody = Regex.Replace(postBody, "align=\"(?<align>[a-z]+)\"\\]", "class=\"${align} image-caption\">");
                     postBody = Regex.Replace(postBody, "</a>(?<caption>.*)\\[/caption\\]", "</a><p class=\"image-caption\"><small>${caption}</small></p></div>"); // image w/ link
